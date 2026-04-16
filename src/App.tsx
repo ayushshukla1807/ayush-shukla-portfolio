@@ -2,6 +2,7 @@ import React from 'react';
 import { SceneProvider } from './context/SceneContext';
 import { LenisProvider } from './components/common/LenisProvider';
 import { InteractiveTerminal } from './components/layout/InteractiveTerminal';
+import { SocialDock } from './components/layout/SocialDock';
 
 import { HeroScene } from './components/scenes/HeroScene';
 import { TimelineScene } from './components/scenes/TimelineScene';
@@ -26,6 +27,8 @@ const App: React.FC = () => {
               EST.2024
             </div>
           </div>
+          
+          <SocialDock />
 
           <HeroScene />
           <TimelineScene />

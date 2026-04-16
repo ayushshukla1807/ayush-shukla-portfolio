@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { QuantumCanvas } from '../layout/QuantumCanvas';
 import { motion } from 'framer-motion';
+import { SkillMarquee } from '../common/SkillMarquee';
 
 const ParticleField = () => {
   const pointsRef = useRef<THREE.Points>(null);
@@ -58,19 +59,23 @@ export const FutureScene: React.FC = () => {
         </QuantumCanvas>
       </div>
 
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center w-full">
         <motion.div 
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center w-full"
         >
-          <div className="glass p-12 max-w-2xl border-quantum-blue/20">
+          <div className="glass pt-12 pb-8 px-12 max-w-3xl border-quantum-blue/20 w-full overflow-hidden">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-widest italic">
               THE.FUTURE
             </h2>
-            <p className="text-quantum-blue font-mono text-sm md:text-base leading-relaxed mb-8">
+            <p className="text-quantum-blue font-mono text-sm md:text-base leading-relaxed mb-4 max-w-2xl mx-auto">
               Focusing on the convergence of <span className="text-white">AWS Cloud infrastructure</span> and <span className="text-evox-purple">Quantum Computing</span>. Building scalable, intelligent systems for the next era of tech.
             </p>
-            <div className="flex gap-4 justify-center">
+            
+            <SkillMarquee />
+
+            <div className="flex gap-4 justify-center mt-8">
               <button className="btn-quantum">VIEW_RESEARCH</button>
               <button className="btn-quantum border-evox-purple text-evox-purple">CONNECT_SECURELY</button>
             </div>

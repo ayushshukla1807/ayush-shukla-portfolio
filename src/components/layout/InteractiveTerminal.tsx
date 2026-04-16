@@ -14,9 +14,21 @@ const COMMANDS = {
   PROJECTS: 'cd /projects',
   CONTACT: 'contact',
   RESUME: 'sudo get-resume',
+  CERTS: 'show certs',
+  SKILLS: 'show skills',
+  SOCIALS: 'socials',
   CLEAR: 'clear',
   HELP: 'help',
 };
+
+const CERTS_DATA = [
+  "1. Generative AI for Everyone (DeepLearning.AI)",
+  "2. AI for Everyone (DeepLearning.AI)",
+  "3. How Things Work in Python (Univ of Virginia)",
+  "4. Java Language Specialization (Dazzling Skill)"
+];
+
+const SKILLS_DATA = "CSS, HTML, Java, JavaScript, Python, PHP, Vue.js, React, Next JS, Node.js, Generative AI, Tailwind, TypeScript, MySQL, .Net";
 
 export const InteractiveTerminal: React.FC = () => {
   const { scrollProgress, activeScene, setIsPhysicsEnabled, isPhysicsEnabled } = useScene();
@@ -24,8 +36,12 @@ export const InteractiveTerminal: React.FC = () => {
   const [history, setHistory] = useState<string[]>(['Welcome to Quantum-CLI v1.0.0', 'Type "help" for a list of commands.']);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  const addLog = (msg: string) => {
-    setHistory((prev) => [...prev, msg].slice(-20));
+  const addLog = (msg: string | string[]) => {
+    if (Array.isArray(msg)) {
+      setHistory((prev) => [...prev, ...msg].slice(-30));
+    } else {
+      setHistory((prev) => [...prev, msg].slice(-30));
+    }
   };
 
   const handleCommand = (e: React.FormEvent) => {
@@ -49,8 +65,19 @@ export const InteractiveTerminal: React.FC = () => {
         addLog('Navigating to /projects...');
         break;
       case COMMANDS.CONTACT:
-        addLog('Initializing secure comms channel...');
-        window.open('https://linkedin.com/in/ayushshukla', '_blank');
+      case COMMANDS.SOCIALS:
+        addLog([
+          'Initializing secure comms channel...',
+          'LinkedIn: linkedin.com/in/ayush-s-08716533',
+          'GitHub: github.com/ayushshukla1807',
+          'Click the Top-Right UI icons for rapid traversal.'
+        ]);
+        break;
+      case COMMANDS.CERTS:
+        addLog(['QUERY: Fetching authorized specializations...'].concat(CERTS_DATA));
+        break;
+      case COMMANDS.SKILLS:
+        addLog(['QUERY: Dumping combat matrix...', SKILLS_DATA]);
         break;
       case COMMANDS.RESUME:
         addLog('Access granted. Downloading secure packet [CV_Ayush_Shukla.pdf]...');
