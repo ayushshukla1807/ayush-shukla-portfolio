@@ -1,64 +1,39 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { SceneProvider } from './context/SceneContext';
 import { LenisProvider } from './components/common/LenisProvider';
-import { QuantumCanvas } from './components/layout/QuantumCanvas';
-import { useFrame } from '@react-three/fiber';
-import { Mesh } from 'three';
+import { InteractiveTerminal } from './components/layout/InteractiveTerminal';
 
-const TestCube = () => {
-  const meshRef = useRef<Mesh>(null);
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta;
-      meshRef.current.rotation.y += delta;
-    }
-  });
-  return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color="#00F2FF" wireframe />
-    </mesh>
-  );
-};
+import { HeroScene } from './components/scenes/HeroScene';
+import { TimelineScene } from './components/scenes/TimelineScene';
+import { ProjectMatrix } from './components/scenes/ProjectMatrix';
+import { FutureScene } from './components/scenes/FutureScene';
 
 const App: React.FC = () => {
   return (
     <SceneProvider>
       <LenisProvider>
-        <div style={{ 
-          backgroundColor: '#0a0a0a', 
-          color: '#00F2FF', 
-          minHeight: '100vh', 
-          display: 'flex', 
-          flexDirection: 'column',
-          alignItems: 'center', 
-          justifyContent: 'center',
-          fontFamily: 'monospace',
-          position: 'relative'
-        }}>
-          {/* Canvas Probe */}
-          <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-            <QuantumCanvas camera={{ position: [0, 0, 5], fov: 45 }}>
-              <TestCube />
-            </QuantumCanvas>
+        <main className="relative bg-deep-space selection:bg-quantum-blue/30 selection:text-quantum-blue">
+          {/* Header Progress Overlay */}
+          <div className="fixed top-0 left-0 w-full h-1 z-40 bg-white/5">
+            <div className="h-full bg-quantum-blue transition-all duration-300 pointer-events-none" />
           </div>
 
-          {/* HUD Overlay */}
-          <div style={{ zIndex: 10, textAlign: 'center', pointerEvents: 'none' }}>
-            <h1 style={{ fontSize: '3rem', margin: '0' }}>SYSTEM_READY</h1>
-            <p style={{ opacity: 0.5, marginTop: '1rem' }}>AYUSH_SHUKLA.SYS_V2.2_CANVAS_PROBE</p>
-            
-            <div style={{ marginTop: '2rem', border: '1px solid #00F2FF', padding: '1rem', background: 'rgba(10,10,10,0.8)' }}>
-              <p>[OK] REACT_KERNEL_LOADED</p>
-              <p>[OK] INFRASTRUCTURE_READY (LENIS + CONTEXT)</p>
-              <p>[WAIT] PIPELINE_PROBE (THREE_JS_CANVAS)</p>
+          <div className="fixed top-8 left-8 z-40 space-x-4 flex">
+            <div className="glass px-4 py-2 text-xs font-mono text-white/50 border-quantum-blue/30">
+              AYUSH_SHUKLA.SYS
             </div>
-
-            <div style={{ position: 'fixed', bottom: '10px', right: '10px', color: '#ff00ff', fontSize: '10px' }}>
-              STATUS: RESURRECTING_STEP_2_PROBE
+            <div className="glass px-4 py-2 text-xs font-mono text-quantum-blue border-evox-purple/30">
+              EST.2024
             </div>
           </div>
-        </div>
+
+          <HeroScene />
+          <TimelineScene />
+          <ProjectMatrix />
+          <FutureScene />
+
+          <InteractiveTerminal />
+        </main>
       </LenisProvider>
     </SceneProvider>
   );
