@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import { ErrorBoundary } from './ErrorBoundary'
 
 // Global Runtime Error Tracker for Debugging Live Site
 if (typeof window !== 'undefined') {
@@ -17,6 +18,8 @@ if (typeof window !== 'undefined') {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>,
 )
