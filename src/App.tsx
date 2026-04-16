@@ -9,8 +9,16 @@ import { ProjectMatrix } from './components/scenes/ProjectMatrix';
 import { FutureScene } from './components/scenes/FutureScene';
 
 const App: React.FC = () => {
+  React.useEffect(() => {
+    console.log("[React] App Component Mounting Successfully");
+    console.log("[Environment] Base:", import.meta.env.BASE_URL);
+  }, []);
+
   return (
     <SceneProvider>
+      <div id="react-fallback" style={{ position: 'fixed', top: '50px', left: '10px', zIndex: 9998, color: '#00F2FF', background: 'rgba(0,0,0,0.8)', padding: '5px', fontSize: '10px' }}>
+        [REACT_EXECUTING]
+      </div>
       <LenisProvider>
         <main className="relative bg-deep-space">
           {/* Header Progress Overlay */}
