@@ -1,49 +1,30 @@
 import React from 'react';
-import { SceneProvider } from './context/SceneContext';
-import { LenisProvider } from './components/common/LenisProvider';
-import { InteractiveTerminal } from './components/layout/InteractiveTerminal';
-
-import { HeroScene } from './components/scenes/HeroScene';
-import { TimelineScene } from './components/scenes/TimelineScene';
-import { ProjectMatrix } from './components/scenes/ProjectMatrix';
-import { FutureScene } from './components/scenes/FutureScene';
 
 const App: React.FC = () => {
-  React.useEffect(() => {
-    console.log("[React] App Component Mounting Successfully");
-    console.log("[Environment] Base:", import.meta.env.BASE_URL);
-  }, []);
-
   return (
-    <SceneProvider>
-      <div id="react-fallback" style={{ position: 'fixed', top: '50px', left: '10px', zIndex: 9998, color: '#00F2FF', background: 'rgba(0,0,0,0.8)', padding: '5px', fontSize: '20px', border: '2px solid cyan' }}>
-        [REACT_EXECUTING_BASE_UI]
+    <div style={{ 
+      backgroundColor: '#0a0a0a', 
+      color: '#00F2FF', 
+      minHeight: '100vh', 
+      display: 'flex', 
+      flexDirection: 'column',
+      alignItems: 'center', 
+      justifyContent: 'center',
+      fontFamily: 'monospace'
+    }}>
+      <h1 style={{ fontSize: '3rem', margin: '0' }}>SYSTEM_READY</h1>
+      <p style={{ opacity: 0.5, marginTop: '1rem' }}>AYUSH_SHUKLA.SYS_V2.0</p>
+      
+      <div style={{ marginTop: '2rem', border: '1px solid #00F2FF', padding: '1rem' }}>
+        <p>[OK] REACT_KERNEL_LOADED</p>
+        <p>[OK] VITE_ENVIRONMENT_VERIFIED</p>
+        <p>[OK] GITHUB_PAGES_DIST_ACTIVE</p>
       </div>
-      {/* <LenisProvider> */}
-        <main className="relative bg-deep-space">
-          {/* Header Progress Overlay */}
-          <div className="fixed top-0 left-0 w-full h-1 z-40 bg-white/5">
-            <div className="h-full bg-quantum-blue transition-all duration-300 pointer-events-none" />
-          </div>
 
-          <div className="fixed top-8 left-8 z-40 space-x-4 flex">
-            <div className="glass px-4 py-2 text-xs font-mono text-white/50 border-quantum-blue/30">
-              AYUSH_SHUKLA.SYS
-            </div>
-            <div className="glass px-4 py-2 text-xs font-mono text-quantum-blue border-evox-purple/30">
-              EST.2024
-            </div>
-          </div>
-
-          <HeroScene />
-          <TimelineScene />
-          <ProjectMatrix />
-          <FutureScene />
-
-          <InteractiveTerminal />
-        </main>
-      {/* </LenisProvider> */}
-    </SceneProvider>
+      <div style={{ position: 'fixed', top: '10px', right: '10px', color: 'red' }}>
+        DEBUG_MODE: NUCLEAR_BASELINE
+      </div>
+    </div>
   );
 };
 
