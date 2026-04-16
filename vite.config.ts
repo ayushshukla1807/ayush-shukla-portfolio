@@ -4,7 +4,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/ayush-shukla-portfolio/',
+  base: './',
   plugins: [react()],
   resolve: {
     alias: {
@@ -15,8 +15,3 @@ export default defineConfig({
     chunkSizeWarningLimit: 1500,
   },
 });
-
-
-
-
-
