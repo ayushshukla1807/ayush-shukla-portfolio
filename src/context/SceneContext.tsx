@@ -15,15 +15,27 @@ export const SceneProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [activeScene, setActiveScene] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isPhysicsEnabled, setIsPhysicsEnabled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Update active scene based on progress logic or manual triggers
   useEffect(() => {
-    const sceneHeight = 1 / 4; // Assuming 4 scenes
-    const currentScene = Math.floor(scrollProgress / sceneHeight);
+    if (!isMounted) return;
+
+    // Safety for NaN or invalid progress
+    const safeProgress = isNaN(scrollProgress) ? 0 : Math.min(1, Math.max(0, scrollProgress));
+    
+    const sceneHeight = 0.25; // 4 scenes
+    const currentScene = Math.floor(safeProgress / sceneHeight);
+    
     if (currentScene !== activeScene && currentScene >= 0 && currentScene < 4) {
       setActiveScene(currentScene);
+      console.log(`[SceneMatrix] Transition to Scene ${currentScene}`);
     }
-  }, [scrollProgress, activeScene]);
+  }, [scrollProgress, activeScene, isMounted]);
 
   return (
     <SceneContext.Provider
