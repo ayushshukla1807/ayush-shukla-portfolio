@@ -22,7 +22,8 @@ const milestones = [
     title: 'NST-SDC Mentor', 
     role: 'Core Member',
     description: 'Led mentorship for 15 junior developers, guiding architectural best practices. Spearheaded key club activities including NIRMAAN Hackathon and SKILLFEST recruitment drive.',
-    tags: ['Mentorship', 'Community Building']
+    tags: ['Mentorship', 'Community Building'],
+    image: './assets/ayush-youtube.png'
   },
   { 
     year: 'Event Leadership', 
