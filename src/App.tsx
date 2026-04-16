@@ -16,10 +16,10 @@ const App: React.FC = () => {
 
   return (
     <SceneProvider>
-      <div id="react-fallback" style={{ position: 'fixed', top: '50px', left: '10px', zIndex: 9998, color: '#00F2FF', background: 'rgba(0,0,0,0.8)', padding: '5px', fontSize: '10px' }}>
-        [REACT_EXECUTING]
+      <div id="react-fallback" style={{ position: 'fixed', top: '50px', left: '10px', zIndex: 9998, color: '#00F2FF', background: 'rgba(0,0,0,0.8)', padding: '5px', fontSize: '20px', border: '2px solid cyan' }}>
+        [REACT_EXECUTING_BASE_UI]
       </div>
-      <LenisProvider>
+      {/* <LenisProvider> */}
         <main className="relative bg-deep-space">
           {/* Header Progress Overlay */}
           <div className="fixed top-0 left-0 w-full h-1 z-40 bg-white/5">
@@ -42,7 +42,7 @@ const App: React.FC = () => {
 
           <InteractiveTerminal />
         </main>
-      </LenisProvider>
+      {/* </LenisProvider> */}
     </SceneProvider>
   );
 };

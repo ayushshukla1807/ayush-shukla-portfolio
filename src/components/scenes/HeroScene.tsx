@@ -19,16 +19,15 @@ export const HeroScene: React.FC = () => {
   return (
     <section className="relative h-[200vh] w-full bg-deep-space overflow-hidden">
       <div className="sticky top-0 h-screen w-full">
-        <QuantumCanvas camera={{ position: cameraPosition, fov: 45 }}>
+        {/* <QuantumCanvas camera={{ position: cameraPosition, fov: 45 }}>
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
           
           <NSTIsland />
           <QuantumParticle />
 
-          {/* Environmental Glow */}
           <color attach="background" args={['#050505']} />
           <fog attach="fog" args={['#050505', 10, 25]} />
-        </QuantumCanvas>
+        </QuantumCanvas> */}
 
         {/* Overlay Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
