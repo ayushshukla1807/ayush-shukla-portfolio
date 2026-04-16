@@ -20,10 +20,10 @@ export const HeroScene: React.FC = () => {
     <section className="relative h-[200vh] w-full bg-deep-space overflow-hidden">
       <div className="sticky top-0 h-screen w-full">
         <QuantumCanvas camera={{ position: cameraPosition, fov: 45 }}>
-          {/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} /> */}
+          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
           
           <NSTIsland />
-          {/* <QuantumParticle /> */}
+          <QuantumParticle />
 
           {/* Environmental Glow */}
           <color attach="background" args={['#050505']} />

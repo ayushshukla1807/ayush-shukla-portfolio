@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { QuantumCanvas } from '../layout/QuantumCanvas';
-import { Float, Text, Center } from '@react-three/drei';
+import { motion } from 'framer-motion';
 
 const ParticleField = () => {
   const pointsRef = useRef<THREE.Points>(null);
@@ -59,7 +59,10 @@ export const FutureScene: React.FC = () => {
       </div>
 
       <div className="relative z-10 text-center">
-        <Float speed={5} rotationIntensity={0.5} floatIntensity={1}>
+        <motion.div 
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        >
           <div className="glass p-12 max-w-2xl border-quantum-blue/20">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-widest italic">
               THE.FUTURE
@@ -72,7 +75,7 @@ export const FutureScene: React.FC = () => {
               <button className="btn-quantum border-evox-purple text-evox-purple">CONNECT_SECURELY</button>
             </div>
           </div>
-        </Float>
+        </motion.div>
       </div>
 
       {/* Footer minimal info */}
