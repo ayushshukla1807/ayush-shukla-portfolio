@@ -15,7 +15,8 @@ const milestones = [
     title: 'FOSSASIA', 
     role: 'Developer (Part Time)',
     description: 'Contributed to the Eventyay platform by refactoring backend modules (Python/Flask) and enhancing frontend user flows (Vue.js).',
-    tags: ['Python', 'Flask', 'Vue.js']
+    tags: ['Python', 'Flask', 'Vue.js'],
+    image: './assets/nst.jpg'
   },
   { 
     year: '2024 - Present', 
