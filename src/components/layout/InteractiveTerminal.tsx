@@ -28,7 +28,7 @@ const CERTS_DATA = [
   "4. Java Language Specialization (Dazzling Skill)"
 ];
 
-const SKILLS_DATA = "CSS, HTML, Java, JavaScript, Python, PHP, Vue.js, React, Next JS, Node.js, Generative AI, Tailwind, TypeScript, MySQL, .Net";
+const SKILLS_DATA = "Languages: Python, JS, TS, Java, HTML, CSS, SQL, C++, PHP | Frameworks: React, Next.js, Node.js, Express, FastAPI, Prisma ORM, Tailwind, Streamlit | AI/ML: RAG, NLP, LangChain, OpenAI API, PyTorch, Scikit-Learn | Databases & DevOps: PostgreSQL, MySQL, Supabase, Git, Docker, AWS, GCP";
 
 export const InteractiveTerminal: React.FC = () => {
   const { scrollProgress, activeScene, setIsPhysicsEnabled, isPhysicsEnabled } = useScene();

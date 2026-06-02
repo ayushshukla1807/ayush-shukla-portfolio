@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const SKILLS = [
   "Generative AI", "TypeScript", "React", "Next JS", "Java", "Python",
-  "HTML", "CSS", "Tailwind", "JavaScript", "MySQL", ".Net", "PHP", "Vue.js",
-  "Decision-making", "Entrepreneurship", "Leadership", "People skills", 
-  "Presentation Skills", "Public speaking", "Social Media", "Team Building"
+  "HTML", "CSS", "Tailwind", "JavaScript", "MySQL", "PHP", "NodeJS", "Express", "Prisma",
+  "FastAPI", "PostgreSQL", "Docker", "AWS", "GCP", "Git", "LangChain",
+  "Leadership", "Mentorship", "Public Speaking", "Agile", "Team Building"
 ];
 
 // Double the array to ensure smooth infinite looping

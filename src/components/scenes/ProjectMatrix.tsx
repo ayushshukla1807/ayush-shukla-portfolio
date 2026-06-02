@@ -7,10 +7,10 @@ import { useScene } from '@/context/SceneContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
-  { id: 'evox', title: 'EvoX Ventures', tags: ['Founder', 'Venture Capital'], color: '#7000FF' },
-  { id: 'nirmaan', title: 'NIRMAAN Hackathon', tags: ['Organizer', '1.5k+ Participants'], color: '#00F2FF' },
-  { id: 'openveda', title: 'OpenVeda', tags: ['Open Source', 'Contributor'], color: '#ffffff' },
-  { id: 'wiki', title: 'Wikimedia AI', tags: ['AI', 'Linking'], color: '#00F2FF' },
+  { id: 'hyrte', title: 'Hyrte AI', tags: ['React', 'Web Audio API', 'Node.js'], color: '#7000FF' },
+  { id: 'datatrace', title: 'DataTrace Pro', tags: ['Python', 'Streamlit', 'Pandas'], color: '#00F2FF' },
+  { id: 'openveda', title: 'OpenVeda', tags: ['Next.js', 'Supabase', 'TypeScript'], color: '#ffffff' },
+  { id: 'wiki', title: 'Wikimedia Smart Linker', tags: ['React', 'MediaWiki', 'PHP'], color: '#00F2FF' },
 ];
 
 const PhysicalCard = ({ project, position }: { project: any, position: [number, number, number] }) => {

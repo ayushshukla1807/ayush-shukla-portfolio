@@ -7,31 +7,31 @@ const milestones = [
     year: 'Oct 2024 - Present', 
     title: 'Wikimedia Foundation', 
     role: 'Participant, Developer Skill Development',
-    description: 'Authored and merged production-level code, including a critical bug fix (T384754) for the Vector 2022 skin, directly improving platform reliability for millions of Wikipedia users.',
-    tags: ['MediaWiki', 'Open Source', 'Bug Fix']
+    description: 'Engineered an AI-powered React Smart Linking Assistant and resolved CORS/memory leaks in Montage across 15+ PRs. Delivered Vector 2022 patches to fix core bugs for 1M+ users.',
+    tags: ['MediaWiki', 'Open Source', 'React', 'PHP', 'Gerrit']
   },
   { 
-    year: 'Feb 2025 - Apr 2025', 
-    title: 'FOSSASIA', 
-    role: 'Developer (Part Time)',
-    description: 'Contributed to the Eventyay platform by refactoring backend modules (Python/Flask) and enhancing frontend user flows (Vue.js).',
-    tags: ['Python', 'Flask', 'Vue.js'],
+    year: 'May 2025 - Aug 2025', 
+    title: 'HYRTE Pvt. Ltd', 
+    role: 'AI/ML Developer Intern',
+    description: 'Architected a 16-point real-time AI candidate assessment pipeline and built a Hinglish-speaking AI interviewer using Python and state management.',
+    tags: ['Python', 'AI Voice', 'Agile', 'Speech Analysis'],
     image: './assets/nst.jpg'
   },
   { 
-    year: '2024 - Present', 
+    year: 'Aug 2024 - Present', 
     title: 'NST-SDC Mentor', 
-    role: 'Core Member',
-    description: 'Led mentorship for 15 junior developers, guiding architectural best practices. Spearheaded key club activities including NIRMAAN Hackathon and SKILLFEST recruitment drive.',
-    tags: ['Mentorship', 'Community Building'],
+    role: 'Core Member & Mentor',
+    description: 'Mentored 15 junior developers in technical architecture and open-source practices. Organized NIRMAAN Hackathon and SKILLFEST recruitment drives.',
+    tags: ['Mentorship', 'Leadership', 'System Design'],
     image: './assets/ayush-youtube.png'
   },
   { 
     year: 'Event Leadership', 
     title: 'Go for Gold - Elite Camp', 
     role: 'Head Organiser',
-    description: 'Conceptualised and executed a 9-day national-level residential camp for ~80 programmers. Led outreach securing ICPC World Finalists and managed a 25+ volunteer logistics team.',
-    tags: ['Leadership', 'Logistics', 'Public Speaking'],
+    description: 'Directed a 25-person team to host a 9-day residential camp for 80+ programmers; secured ICPC World Finalists and managed logistics lifecycle.',
+    tags: ['Leadership', 'Logistics', 'Networking'],
     image: './assets/ayush-speaking.png'
   },
 ];
