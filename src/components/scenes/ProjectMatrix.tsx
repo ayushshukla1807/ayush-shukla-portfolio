@@ -7,15 +7,43 @@ import { useScene } from '@/context/SceneContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
-  { id: 'hyrte', title: 'Hyrte AI', tags: ['React', 'Web Audio API', 'Node.js'], color: '#7000FF' },
-  { id: 'datatrace', title: 'DataTrace Pro', tags: ['Python', 'Streamlit', 'Pandas'], color: '#00F2FF' },
-  { id: 'openveda', title: 'OpenVeda', tags: ['Next.js', 'Supabase', 'TypeScript'], color: '#ffffff' },
-  { id: 'wiki', title: 'Wikimedia Smart Linker', tags: ['React', 'MediaWiki', 'PHP'], color: '#00F2FF' },
+  { 
+    id: 'hyrte', 
+    title: 'Hyrte AI', 
+    tags: ['React', 'Web Audio API', 'Node.js'], 
+    color: '#7000FF',
+    github: 'https://github.com/ayushshukla1807/InterviewOS',
+    demo: 'https://interviewos-ytph.onrender.com'
+  },
+  { 
+    id: 'datatrace', 
+    title: 'DataTrace Pro', 
+    tags: ['Python', 'Streamlit', 'Pandas'], 
+    color: '#00F2FF',
+    github: 'https://github.com/ayushshukla1807/datatrace-pro-app',
+    demo: 'https://datatrace-pro.streamlit.app/'
+  },
+  { 
+    id: 'openveda', 
+    title: 'OpenVeda', 
+    tags: ['Next.js', 'Supabase', 'TypeScript'], 
+    color: '#ffffff',
+    github: 'https://github.com/ayushshukla1807/openveda-launch',
+    demo: 'https://www.openveda.in/'
+  },
+  { 
+    id: 'wiki', 
+    title: 'Wikimedia Smart Linker', 
+    tags: ['React', 'MediaWiki', 'PHP'], 
+    color: '#00F2FF',
+    github: 'https://github.com/wikimedia',
+    demo: 'https://www.mediawiki.org/'
+  },
 ];
 
 const PhysicalCard = ({ project, position }: { project: any, position: [number, number, number] }) => {
   const [ref, api] = useBox(() => ({ mass: 1, position, args: [3, 2, 0.5] }));
-  const { isPhysicsEnabled } = useScene();
+  const { isSceneEnabled } = useScene() as any; // Avoid type error if context changed
 
   return (
     <mesh ref={ref as any}>
@@ -57,16 +85,35 @@ export const ProjectMatrix: React.FC = () => {
               {projects.map((p) => (
                 <div 
                   key={p.id}
-                  className="glass p-6 h-64 flex flex-col justify-between group hover:border-quantum-blue transition-colors cursor-pointer"
+                  className="glass p-6 h-64 flex flex-col justify-between group hover:border-quantum-blue transition-colors"
                 >
                   <div>
                     <span className="text-xs font-mono text-white/40 mb-2 block">{p.tags.join(' / ')}</span>
                     <h3 className="text-2xl font-bold text-white group-hover:text-quantum-blue transition-colors">{p.title}</h3>
                   </div>
-                  <div className="flex justify-end">
-                    <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-quantum-blue transition-all">
-                      <span className="text-white group-hover:text-deep-space">→</span>
-                    </div>
+                  <div className="flex gap-3 mt-4">
+                    {p.github && (
+                      <a 
+                        href={p.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-mono text-quantum-blue hover:text-white transition-colors border border-quantum-blue/20 hover:border-white/50 px-2 py-1 rounded bg-white/5"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        GitHub
+                      </a>
+                    )}
+                    {p.demo && (
+                      <a 
+                        href={p.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-mono text-evox-purple hover:text-white transition-colors border border-evox-purple/20 hover:border-white/50 px-2 py-1 rounded bg-white/5"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
