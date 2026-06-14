@@ -82,8 +82,20 @@ export const FutureScene: React.FC = () => {
             <SkillMarquee />
 
             <div className="flex gap-4 justify-center mt-8">
-              <button className="btn-quantum">VIEW_RESUME</button>
-              <button className="btn-quantum border-evox-purple text-evox-purple">HIRE_ME (6_MONTHS)</button>
+              <a 
+                href="https://drive.google.com/drive/folders/1FdQ255RhZw9f9tafubwUZfQtr08heOSG" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-quantum"
+              >
+                VIEW_RESUME
+              </a>
+              <a 
+                href="mailto:ayush.shukla@adypu.edu.in?subject=6-Month%20Summer%20Internship%20Opportunity" 
+                className="btn-quantum border-evox-purple text-evox-purple flex items-center justify-center"
+              >
+                HIRE_ME (6_MONTHS)
+              </a>
             </div>
           </div>
         </motion.div>
