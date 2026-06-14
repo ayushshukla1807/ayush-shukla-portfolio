@@ -4,6 +4,10 @@ import * as THREE from 'three';
 import { QuantumCanvas } from '../layout/QuantumCanvas';
 import { motion } from 'framer-motion';
 import { SkillMarquee } from '../common/SkillMarquee';
+import { TechGeometries } from '../3d/TechGeometries';
+import { SceneLock } from '../common/SceneLock';
+import { PatternMatcher } from '../games/PatternMatcher';
+
 
 const ParticleField = () => {
   const pointsRef = useRef<THREE.Points>(null);
@@ -52,9 +56,11 @@ const ParticleField = () => {
 export const FutureScene: React.FC = () => {
   return (
     <section className="relative h-screen w-full bg-deep-space overflow-hidden flex items-center justify-center">
+      <SceneLock level={4} title="THE.FUTURE" minigame={<PatternMatcher />}>
       <div className="absolute inset-0 z-0">
         <QuantumCanvas camera={{ position: [0, 0, 10], fov: 45 }}>
           <ParticleField />
+          <TechGeometries count={9} color="#FFFFFF" radius={10} />
           <color attach="background" args={['#050505']} />
         </QuantumCanvas>
       </div>
@@ -70,14 +76,14 @@ export const FutureScene: React.FC = () => {
               THE.FUTURE
             </h2>
             <p className="text-quantum-blue font-mono text-sm md:text-base leading-relaxed mb-4 max-w-2xl mx-auto">
-              Focusing on the convergence of <span className="text-white">AWS Cloud infrastructure</span> and <span className="text-evox-purple">Quantum Computing</span>. Building scalable, intelligent systems for the next era of tech.
+              Actively seeking a <span className="text-white">6-month Summer Internship</span>. Versatile across <span className="text-evox-purple">AI/ML</span>, <span className="text-evox-purple">Full Stack Development</span>, <span className="text-evox-purple">GenAI</span>, Data Analytics, and Product Management. Building scalable, intelligent systems for the next era of tech.
             </p>
             
             <SkillMarquee />
 
             <div className="flex gap-4 justify-center mt-8">
-              <button className="btn-quantum">VIEW_RESEARCH</button>
-              <button className="btn-quantum border-evox-purple text-evox-purple">CONNECT_SECURELY</button>
+              <button className="btn-quantum">VIEW_RESUME</button>
+              <button className="btn-quantum border-evox-purple text-evox-purple">HIRE_ME (6_MONTHS)</button>
             </div>
           </div>
         </motion.div>
@@ -87,6 +93,7 @@ export const FutureScene: React.FC = () => {
       <div className="absolute bottom-8 left-8 text-[10px] font-mono text-white/20">
         © 2026 AYUSH_SHUKLA.ALL_RIGHTS_RESERVED // BUILT_ON_QUANTUM_STACK
       </div>
+      </SceneLock>
     </section>
   );
 };

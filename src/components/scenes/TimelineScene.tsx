@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useScene } from '@/context/SceneContext';
+import { SceneLock } from '../common/SceneLock';
+import { TerminalHack } from '../games/TerminalHack';
 
 const milestones = [
   { 
@@ -47,6 +49,7 @@ export const TimelineScene: React.FC = () => {
 
   return (
     <section ref={containerRef} className="relative min-h-[350vh] bg-deep-space py-20 pb-40">
+      <SceneLock level={2} title="TIMELINE.LOG" minigame={<TerminalHack />}>
       <div className="sticky top-0 h-screen flex flex-col items-center pt-24 overflow-hidden">
         
         <div className="z-20 text-center mb-10">
@@ -124,6 +127,7 @@ export const TimelineScene: React.FC = () => {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-evox-purple/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-quantum-blue/10 blur-[120px] rounded-full" />
       </div>
+      </SceneLock>
     </section>
   );
 };

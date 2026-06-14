@@ -5,6 +5,8 @@ import { QuantumParticle } from '../3d/QuantumParticle';
 import { Stars } from '@react-three/drei';
 import { useScene } from '@/context/SceneContext';
 import { motion } from 'framer-motion';
+import { Typewriter } from '../common/Typewriter';
+import { TechGeometries } from '../3d/TechGeometries';
 
 export const HeroScene: React.FC = () => {
   const { scrollProgress } = useScene();
@@ -24,6 +26,7 @@ export const HeroScene: React.FC = () => {
           
           <NSTIsland />
           <QuantumParticle />
+          <TechGeometries count={8} color="#00F2FF" radius={15} />
 
           {/* Environmental Glow */}
           <color attach="background" args={['#050505']} />
@@ -41,8 +44,21 @@ export const HeroScene: React.FC = () => {
             <h1 className="text-6xl md:text-8xl font-bold text-white mb-4 tracking-tighter">
               AYUSH <span className="text-gradient">SHUKLA</span>
             </h1>
-            <p className="text-quantum-blue font-mono text-sm md:text-lg tracking-widest uppercase">
-              Founder • Quantum-Engineer • Open-Source
+            <div className="text-quantum-blue font-mono text-sm md:text-lg tracking-widest uppercase mt-4 h-8 flex items-center justify-center">
+              <Typewriter 
+                words={[
+                  "AI/ML Intern",
+                  "Full Stack Developer Intern",
+                  "GenAI / LLM Engineer Intern",
+                  "Backend / SDE Intern",
+                  "Frontend Developer Intern",
+                  "Data Analyst Intern",
+                  "Product Management Intern"
+                ]} 
+              />
+            </div>
+            <p className="text-white/50 font-mono text-xs md:text-sm tracking-widest mt-4">
+              SEEKING 6-MONTH SUMMER INTERNSHIP
             </p>
           </motion.div>
         </div>

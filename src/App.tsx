@@ -1,5 +1,6 @@
 import React from 'react';
 import { SceneProvider } from './context/SceneContext';
+import { GameProvider, useGame } from './context/GameContext';
 import { LenisProvider } from './components/common/LenisProvider';
 import { InteractiveTerminal } from './components/layout/InteractiveTerminal';
 import { SocialDock } from './components/layout/SocialDock';
@@ -9,9 +10,28 @@ import { TimelineScene } from './components/scenes/TimelineScene';
 import { ProjectMatrix } from './components/scenes/ProjectMatrix';
 import { FutureScene } from './components/scenes/FutureScene';
 
+const FastTrackButton = () => {
+  const { fastTrack, setFastTrack, setUnlockedLevel } = useGame();
+  
+  if (fastTrack) return null;
+
+  return (
+    <button 
+      onClick={() => {
+        setFastTrack(true);
+        setUnlockedLevel(4);
+      }}
+      className="fixed top-8 right-8 z-50 glass px-4 py-2 text-xs font-mono text-white hover:text-quantum-blue border-evox-purple/30 hover:border-quantum-blue/50 transition-colors"
+    >
+      RECRUITER_FAST_TRACK
+    </button>
+  );
+};
+
 const App: React.FC = () => {
   return (
-    <SceneProvider>
+    <GameProvider>
+      <SceneProvider>
       <LenisProvider>
         <main className="relative bg-deep-space selection:bg-quantum-blue/30 selection:text-quantum-blue">
           {/* Header Progress Overlay */}
@@ -29,6 +49,7 @@ const App: React.FC = () => {
           </div>
           
           <SocialDock />
+          <FastTrackButton />
 
           <HeroScene />
           <TimelineScene />
@@ -39,6 +60,7 @@ const App: React.FC = () => {
         </main>
       </LenisProvider>
     </SceneProvider>
+    </GameProvider>
   );
 };
 

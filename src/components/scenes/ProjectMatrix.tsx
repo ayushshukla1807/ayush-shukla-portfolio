@@ -5,11 +5,15 @@ import { PhysicsWorld } from '../3d/PhysicsWorld';
 import { GlitchShader } from '../effects/GlitchShader';
 import { useScene } from '@/context/SceneContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TechGeometries } from '../3d/TechGeometries';
+import { SceneLock } from '../common/SceneLock';
+import { NodeCollector } from '../games/NodeCollector';
+
 
 const projects = [
   { 
-    id: 'hyrte', 
-    title: 'Hyrte AI', 
+    id: 'interviewos', 
+    title: 'InterviewOS', 
     tags: ['React', 'Web Audio API', 'Node.js'], 
     color: '#7000FF',
     github: 'https://github.com/ayushshukla1807/InterviewOS',
@@ -64,6 +68,7 @@ export const ProjectMatrix: React.FC = () => {
 
   return (
     <section className="relative min-h-screen bg-deep-space flex flex-col items-center justify-center p-10 overflow-hidden">
+      <SceneLock level={3} title="PROJECTS.MATRIX" minigame={<NodeCollector />}>
       <div className="z-10 mb-12 text-center">
         <h2 className="text-5xl font-bold text-white mb-4 italic">PROJECTS.MATRIX</h2>
         <div className="flex gap-2 justify-center">
@@ -125,6 +130,7 @@ export const ProjectMatrix: React.FC = () => {
         {isPhysicsEnabled && (
           <div className="absolute inset-0 z-20">
             <QuantumCanvas camera={{ position: [0, 0, 15], fov: 45 }}>
+              <TechGeometries count={8} color="#7000FF" radius={20} />
               <PhysicsWorld>
                 {projects.map((p, i) => (
                   <PhysicalCard 
@@ -152,6 +158,7 @@ export const ProjectMatrix: React.FC = () => {
           SYSTEM_STATE: EXPERIMENTAL_PHYSICS_ACTIVE
         </div>
       )}
+      </SceneLock>
     </section>
   );
 };
