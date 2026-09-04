@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useScene } from '@/context/SceneContext';
 import { SceneLock } from '../common/SceneLock';
 import { TerminalHack } from '../games/TerminalHack';
+import { useGame } from '../../context/GameContext';
+import { QuestionBlock } from '../mario/QuestionBlock';
 
 const milestones = [
   { 
@@ -39,6 +40,7 @@ const milestones = [
 ];
 
 export const TimelineScene: React.FC = () => {
+  const { marioMode } = useGame();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -48,15 +50,28 @@ export const TimelineScene: React.FC = () => {
   const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   return (
-    <section ref={containerRef} className="relative min-h-[350vh] bg-deep-space py-20 pb-40">
+    <section id="timeline-scene" ref={containerRef} className="relative min-h-[350vh] bg-deep-space py-20 pb-40">
       <SceneLock level={2} title="TIMELINE.LOG" minigame={<TerminalHack />}>
       <div className="sticky top-0 h-screen flex flex-col items-center pt-24 overflow-hidden">
         
-        <div className="z-20 text-center mb-10">
+        <div className="z-20 text-center mb-6">
+          {marioMode ? (
+            <div className="inline-block bg-[#00F000] text-black font-arcade text-xs px-3 py-1 mb-2 border-2 border-black shadow-[2px_2px_0px_#000]">
+              WORLD 1-2 ★ UNDERGROUND PIPE STAGE
+            </div>
+          ) : null}
+
           <h2 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-widest">
             THE.<span className="text-quantum-blue italic">JOURNEY</span>
           </h2>
-          <p className="text-white/40 font-mono text-sm mt-2">Open Source / Leadership / Mentorship</p>
+          <p className="text-white/60 font-mono text-sm mt-2">Open Source / Leadership / Mentorship</p>
+
+          <div className="mt-2">
+            <QuestionBlock 
+              label="SECRET COIN" 
+              secretInfo="Wikimedia PR contributor & HYRTE AI/ML developer. Tap coins along the stage for bonus points!" 
+            />
+          </div>
         </div>
 
         {/* SVG Path Background */}
@@ -68,8 +83,8 @@ export const TimelineScene: React.FC = () => {
           <motion.path
             d="M50,0 Q70,100 30,200 T50,400 T70,600 T50,800"
             fill="none"
-            stroke="#00F2FF"
-            strokeWidth="2"
+            stroke={marioMode ? "#F8B800" : "#00F2FF"}
+            strokeWidth="3"
             style={{ pathLength }}
           />
         </svg>
@@ -92,17 +107,26 @@ export const TimelineScene: React.FC = () => {
                 key={i}
                 style={{ opacity, x }}
                 className={cn(
-                  "flex flex-col gap-3 max-w-lg glass p-6 border-quantum-blue/10 hover:border-quantum-blue/40 transition-colors",
+                  "flex flex-col gap-3 max-w-lg p-6 transition-colors rounded-lg",
+                  marioMode
+                    ? "bg-black/90 border-4 border-[#00F000] shadow-[4px_4px_0px_#000]"
+                    : "glass border-quantum-blue/10 hover:border-quantum-blue/40",
                   i % 2 === 0 ? "self-start text-left" : "self-end text-right items-end"
                 )}
               >
                 <div className="flex flex-col gap-1">
-                  <span className="text-evox-purple font-mono text-xs font-bold">{m.year}</span>
-                  <h3 className="text-2xl font-bold text-white">{m.title}</h3>
-                  <span className="text-quantum-blue text-sm uppercase tracking-wide">{m.role}</span>
+                  <span className={marioMode ? "text-yellow-400 font-arcade text-xs font-bold" : "text-evox-purple font-mono text-xs font-bold"}>
+                    {m.year}
+                  </span>
+                  <h3 className={marioMode ? "text-2xl font-arcade text-white drop-shadow-[2px_2px_0_#000]" : "text-2xl font-bold text-white"}>
+                    {m.title}
+                  </h3>
+                  <span className={marioMode ? "text-[#00F000] font-arcade text-xs tracking-wide" : "text-quantum-blue text-sm uppercase tracking-wide"}>
+                    {m.role}
+                  </span>
                 </div>
                 
-                <p className="text-white/60 text-sm leading-relaxed">{m.description}</p>
+                <p className="text-white/80 text-sm leading-relaxed">{m.description}</p>
                 
                 {m.image && (
                   <div className="mt-2 rounded-md overflow-hidden border border-white/10 w-full max-w-xs relative isolate">
@@ -113,7 +137,12 @@ export const TimelineScene: React.FC = () => {
 
                 <div className="flex gap-2 flex-wrap mt-2">
                   {m.tags.map(t => (
-                    <span key={t} className="text-[10px] font-mono px-2 py-1 bg-white/5 border border-white/10 rounded">{t}</span>
+                    <span 
+                      key={t} 
+                      className={marioMode ? "text-[9px] font-arcade px-2 py-1 bg-yellow-500/20 border border-yellow-500/50 text-yellow-300 rounded" : "text-[10px] font-mono px-2 py-1 bg-white/5 border border-white/10 rounded"}
+                    >
+                      {t}
+                    </span>
                   ))}
                 </div>
               </motion.div>

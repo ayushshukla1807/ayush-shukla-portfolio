@@ -10,8 +10,11 @@ import { TimelineScene } from './components/scenes/TimelineScene';
 import { ProjectMatrix } from './components/scenes/ProjectMatrix';
 import { FutureScene } from './components/scenes/FutureScene';
 
+import { MarioHUD } from './components/mario/MarioHUD';
+import { MarioRunnerOverlay } from './components/mario/MarioRunnerOverlay';
+
 const FastTrackButton = () => {
-  const { fastTrack, setFastTrack, setUnlockedLevel } = useGame();
+  const { fastTrack, setFastTrack, setUnlockedLevel, marioMode } = useGame();
   
   if (fastTrack) return null;
 
@@ -21,7 +24,11 @@ const FastTrackButton = () => {
         setFastTrack(true);
         setUnlockedLevel(4);
       }}
-      className="fixed top-8 right-8 z-50 glass px-4 py-2 text-xs font-mono text-white hover:text-quantum-blue border-evox-purple/30 hover:border-quantum-blue/50 transition-colors"
+      className={`fixed top-14 right-4 md:right-8 z-40 px-3 py-1.5 text-xs transition-colors ${
+        marioMode 
+          ? 'font-arcade bg-[#F8B800] text-black border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-yellow-300' 
+          : 'glass font-mono text-white hover:text-quantum-blue border-evox-purple/30'
+      }`}
     >
       RECRUITER_FAST_TRACK
     </button>
@@ -32,34 +39,27 @@ const App: React.FC = () => {
   return (
     <GameProvider>
       <SceneProvider>
-      <LenisProvider>
-        <main className="relative bg-deep-space selection:bg-quantum-blue/30 selection:text-quantum-blue">
-          {/* Header Progress Overlay */}
-          <div className="fixed top-0 left-0 w-full h-1 z-40 bg-white/5">
-            <div className="h-full bg-quantum-blue transition-all duration-300 pointer-events-none" />
-          </div>
+        <LenisProvider>
+          <main className="relative bg-deep-space selection:bg-yellow-400 selection:text-black min-h-screen pt-12">
+            {/* Top Super Mario HUD */}
+            <MarioHUD />
 
-          <div className="fixed top-8 left-8 z-40 space-x-4 flex">
-            <div className="glass px-4 py-2 text-xs font-mono text-white/50 border-quantum-blue/30">
-              AYUSH_SHUKLA.SYS
-            </div>
-            <div className="glass px-4 py-2 text-xs font-mono text-quantum-blue border-evox-purple/30">
-              EST.2024
-            </div>
-          </div>
-          
-          <SocialDock />
-          <FastTrackButton />
+            <SocialDock />
+            <FastTrackButton />
 
-          <HeroScene />
-          <TimelineScene />
-          <ProjectMatrix />
-          <FutureScene />
+            {/* Stages / Worlds */}
+            <HeroScene />
+            <TimelineScene />
+            <ProjectMatrix />
+            <FutureScene />
 
-          <InteractiveTerminal />
-        </main>
-      </LenisProvider>
-    </SceneProvider>
+            <InteractiveTerminal />
+
+            {/* Bottom Mario Auto-Runner Overlay */}
+            <MarioRunnerOverlay />
+          </main>
+        </LenisProvider>
+      </SceneProvider>
     </GameProvider>
   );
 };
